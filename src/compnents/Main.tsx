@@ -2,10 +2,9 @@ import React from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import { Button } from '@mui/material';
-import Link from 'antd/es/typography/Link';
+import { Link } from 'react-router-dom';
 
 import Footer from './Footer';
-import MyApp from './Carousel';
 
 const images = [
   { id: 1, src: 'src/assets/slider1.jpg', alt: 'Slider 1' },
@@ -44,21 +43,23 @@ const Main: React.FC = () => {
           ))}
         </Carousel>
       </div>
-      <div style={{ width: "100%", height: "20px" }}>
-        <Button style={{ width: "50%", backgroundColor: "green", color: "white" }}>Order Now</Button>
-        <Button style={{ width: "50%", border: "2px solid green", textAlign: "center" }}>Explore Menu</Button>
+      <div style={{ width: "100%", height: "45px", display: "flex", justifyContent: "space-evenly" }}>
+        <Button style={{ width: "45%", backgroundColor: "green", color: "white" }}>Order Now</Button>
+        <Button style={{ width: "45%", border: "3px solid green", textAlign: "center", color: "green" }}>Explore Menu</Button>
       </div>
       <hr style={{ marginTop: "30px" }}></hr>
-      <div style={{ marginTop: "30px", width: "100%", height: "auto", display: "flex", justifyContent: "space-evenly" }}>
-        <Link>menu</Link>
-        <Link>plates</Link>
-        <Link>salads</Link>
-        <Link>sandwiches</Link>
+      <div style={{ marginTop: "30px", width: "100%", height: "auto", display: "flex", justifyContent: "center" }}>
+        <div style={{ marginTop: "30px", width: "50%", height: "auto", display: "flex", justifyContent: "space-evenly" }}>
+          <Link to='#' style={{ fontSize: "large", color: "grey" }}><b>menu</b></Link>
+          <Link to='#'  style={{ fontSize: "large", color: "grey" }}><b>plates</b></Link>
+          <Link to='#' style={{ fontSize: "large", color: "grey" }}><b>salads</b></Link>
+          <Link to='#' style={{ fontSize: "large", color: "grey" }}><b>sandwiches</b></Link>
+        </div>
       </div>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', marginTop: "10px" }}>
         <div style={{ display: "grid", justifyContent: 'center', gridTemplateColumns: "repeat(3, 1fr)", gridTemplateRows: "repeat(5, 1fr)", padding: "30px", gap: "30px", marginTop: "30px", width: "75%", alignContent: "center" }}>
           {plates.map((plate) => (
-            <a key={plate.id}>
+            <a key={plate.id} href='#'>
               <div style={{ backgroundColor: "lightcoral", width: "100%", height: "250px", marginTop: "10px" }}>
                 <img src={plate.src} width='320px' height='250px' alt="Plate" />
                 <div style={{ marginTop: "5px", textAlign: "center", color: "black" }}>{plate.name}</div>
@@ -67,80 +68,57 @@ const Main: React.FC = () => {
           ))}
         </div>
       </div>
+      <div style={{display:"flex", justifyContent:"center", marginTop:"1rem"}}>
 
-      <div style={{ display: "flex", width: "100%" }}>
-            <div style={{ flex: 1 }}>
-            <div>
-                <h3 style={{ textAlign: "center", color: "green" }}>
-                <span style={{ fontFamily: "Verdana, Geneva;", fontSize: "14pt" }}>
-                    JOIN OUR NEWSLETTER
-                </span>
-                </h3>
-                <p style={{ textAlign: "center", color: "green" }}>
-                Sign up to be in the know on new menu items exclusive events, restaurant openings and more.
-                </p>
-                <input type='text' placeholder='Enter Your Email' style={{ width: "100%" }}></input>
-                <input type='submit' style={{ width: "100%" }}></input>
-            </div>
-            </div>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", margin: "20px auto", maxWidth: "600px" }}>
+        <h3 style={{ color: "green", fontFamily: "Verdana, Geneva", fontSize: "14pt", marginBottom: "10px" }}>
+          JOIN OUR NEWSLETTER
+        </h3>
+        <p style={{ color: "green", marginBottom: "10px" }}>
+          Sign up to be in the know on new menu items, exclusive events, restaurant openings, and more.
+        </p>
+        <input style={{ width: "100%", marginBottom: "10px" }} type='text' placeholder='Enter Your Email' />
+        <input style={{ width: "100%", backgroundColor: "green", color: "white", border: "none", padding: "10px 20px" }} type='submit' value="Subscribe" />
+      </div>
 
-
-            <div style={{ flex: 1 }}>
-          <div
-            className="wpb_column vc_column_container vc_col-sm-6 vc_hidden-lg vc_hidden-md vc_col-has-fill nk-awb"
-            style={{ width: "50%" }}
-          >
-            <div className="vc_column-inner vc_custom_1647545074999">
-              <div className="wpb_wrapper">
-                <div className="wpb_text_column wpb_content_element ">
-                  <div className="wpb_wrapper">
-                    <h3 style={{ textAlign: "center" }}>
-                      <span style={{ fontFamily: "Verdana Geneva", fontSize: "14pt", color: "green" }}>
-                        DOWNLOAD OUR APP
-                      </span>
-                    </h3>
-                  </div>
-                </div>
-                <div style={{ display: "flex", justifyContent: "center" }}>
-                  <div style={{ marginRight: "20px", marginLeft: "200px" }}>
-                    <a
-                      href="https://play.google.com/store/apps/details?id=com.urbanplates.urbanplates"
-                      target="_self"
-                    >
-                      <img
-                        className="vc_single_image-img "
-                        title="google-app-btn"
-                        src="https://urbanplates.com/wp-content/uploads/2022/03/google-app-btn-200x66.png"
-                        alt="google-app-btn"
-                        width="200"
-                        height="66"
-                      />
-                    </a>
-                  </div>
-                  <div>
-                    <img
-                      className="vc_single_image-img attachment-full"
-                      src="https://urbanplates.com/wp-content/uploads/2022/03/up-phone-app-homepage.png"
-                      alt="Urban Plates Phone App"
-                      width="239"
-                      height="281"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="nk-awb-wrap nk-awb-rendered"
-              style={{ marginLeft: "-17px", marginRight: "-33.3437px" }}
-              data-awb-type="color"
-              data-awb-stretch="true"
-              data-awb-image-background-size="cover"
-              data-awb-image-background-position="50% 50%"
-            >
-              &nbsp;
-            </div>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", margin: "20px auto", maxWidth: "600px" }}>
+        <h3 style={{ textAlign: "center", fontFamily: "Verdana Geneva", fontSize: "14pt", color: "green" }}>
+          DOWNLOAD OUR APP
+        </h3>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <div style={{ marginRight: "20px" }}>
+            <a href="https://play.google.com/store/apps/details?id=com.urbanplates.urbanplates" target="_self">
+              <img
+                className="vc_single_image-img"
+                title="google-app-btn"
+                src="https://urbanplates.com/wp-content/uploads/2022/03/google-app-btn-200x66.png"
+                alt="google-app-btn"
+                width="200"
+                height="66"
+              />
+            </a>
+          </div>
+          <div>
+            <img
+              className="vc_single_image-img attachment-full"
+              src="https://urbanplates.com/wp-content/uploads/2022/03/up-phone-app-homepage.png"
+              alt="Urban Plates Phone App"
+              width="239"
+              height="281"
+            />
           </div>
         </div>
+      </div>
+      </div>
+      <div style={{ textAlign: "center", color: "black", marginTop: "20px", marginBottom: "20px" }}>
+        <p>
+          <b>
+            Welcome, one and all, to our table. Where craveable food is cooked from scratch with quality ingredients.
+            Where it’s sustainably grown, ethically treated, and made to order. All at prices that won’t break the bank.
+            Our secret? There isn’t one. We're fueled by the power of real food and a passion to change the way the world eats,
+            one plate at a time. A movement so easy to join, you can do it by lifting a fork. Everyone deserves to eat this good.
+          </b>
+        </p>
       </div>
 
       <Footer />

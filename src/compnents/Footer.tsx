@@ -8,54 +8,52 @@ import { Typography } from 'antd';
 
 const Footer = () => {
     const links = [
-        { text: 'Link 1', url: '#' },
-        { text: 'Link 2', url: '#' },
-        { text: 'Link 3', url: '#' },
-        { text: 'Link 4', url: '#' },
-        { text: 'Link 5', url: '#' },
-        { text: 'Link 6', url: '#' },
-        { text: 'Link 7', url: '#' },
-        { text: 'Link 8', url: '#' },
-        { text: 'Link 9', url: '#' },
-        { text: 'Link 10', url: '#' },
-        { text: 'Link 11', url: '#' },
+        { text: 'Contact Us', url: '#' },
+        { text: 'Our Promise', url: '#' },
+        { text: 'Careers', url: '#' },
+        { text: 'Privacy Policy', url: '#' },
+        { text: 'Gifts Cards', url: '#' },
+        { text: 'Donations', url: '#' },
+        { text: 'Locations', url: '#' },
+        { text: 'Terms and Conditions', url: '#' },
+        { text: 'High Protien', url: '#' },
+        { text: 'Low Calorie', url: '#' },
+        { text: 'Plant Based', url: '#' },
       ];
 
   return (
     <div
       style={{
         width: '100%',
-        height: '50vh',
         display: 'flex',
-        backgroundColor:"grey",
+        backgroundColor:"white",
         marginBottom:"0px"
       }}
     >
       <div
         className="left-top-text"
         style={{
-            width:"320px",
+          width:"18%",
           height: '100%',
           color: 'green',
         }}
       >
-        <div style={{width:"25%"}}>
-        Urban 
-        Plates
+        <div >
+        <b style={{fontSize:"40px", fontFamily:"Bentham", color:"#656D6D"}}>URBAN PLATES</b>
         </div>
       </div>
       <div
       style={{
-        width: '220%',
+        width: '50%',
         display: 'grid',
         gridTemplateColumns: 'repeat(3, 1fr)',
         gridTemplateRows: 'repeat(4, 1fr)',
         gap: '1px',
-        backgroundColor: 'grey',
+        backgroundColor: 'white',
       }}
     >
       {links.map((link, index) => (
-        <a key={index} href={link.url} style={{ border: '1px solid black', padding: '10px' }}>
+        <a key={index} href={link.url} style={{ padding: '10px',color:"black"  }}>
           {link.text}
         </a>
       ))}
@@ -63,19 +61,26 @@ const Footer = () => {
       <div
         className="additional-links"
         style={{
-            width:"790px",
-            display:"flex",
+           width:"25%",
+            // display:"flex",
+            //margin:"10px",
             alignItems:"center",
-          justifyContent:"center",
-          height: '100%',
+         justifyContent:"center",
+         // verticalAlign:"middle",
+          display:"grid",
+          //padding: "3vh 0 0 0"
         }}
       >
-      <a href='https://www.instagram.com/'><InstagramIcon/></a>
-       <a href='https://www.facebook.com/'><FacebookIcon/></a>
-       <a href='https://www.twitter.com/'><TwitterIcon/></a>
-       <a href='https://www.youtube.com/'><YouTubeIcon/></a>
-       <a href='https://www.linkedin.com/'><LinkedInIcon/></a>
+        <div style={{width:"100%",display:"flex",justifyContent:"space-between"}}>
+      <a href='https://www.instagram.com/' style={{color:"#656D6D"}}><InstagramIcon/></a>
+       <a href='https://www.facebook.com/' style={{color:"#656D6D"}}><FacebookIcon/></a>
+       <a href='https://www.twitter.com/' style={{color:"#656D6D"}}><TwitterIcon/></a>
+       <a href='https://www.youtube.com/' style={{color:"#656D6D"}}><YouTubeIcon/></a>
+       <a href='https://www.linkedin.com/' style={{color:"#656D6D"}}><LinkedInIcon/></a>
+        </div>
+        <div style={{width:"100%", color:"black"}}>
         <Typography>© Urban Plates. All Rights Reserved.</Typography>
+        </div>
       </div>
     </div>
   );
