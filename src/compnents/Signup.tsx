@@ -35,7 +35,7 @@ const SignupForm = () => {
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      const baseUrl = 'https://urban-staging.novadine.com/api/v2/';
+      const baseUrl = 'https://urban-staging.novadine.com/api/v2';
       const endpoint = '/customers/registration';
       const url = `${baseUrl}${endpoint}`;
 
