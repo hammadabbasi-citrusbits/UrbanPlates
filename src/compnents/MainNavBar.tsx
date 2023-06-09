@@ -3,9 +3,11 @@ import { AppBar, Toolbar, Typography, Avatar, Button, Drawer, List, ListItem, Li
 import { Link } from 'react-router-dom';
 
 const ResponsiveToolbar = styled(Toolbar)(({ theme }) => ({
+  alignItems:"center",
   [theme.breakpoints.down('sm')]: {
     flexDirection: 'column',
     alignItems: 'center',
+   
   },
 }));
 
@@ -39,7 +41,7 @@ const MainNavbar: React.FC = () => {
   };
 
   return (
-    <AppBar style={{ backgroundColor: 'white' }}>
+    <AppBar style={{ backgroundColor: 'white'}}>
       <ResponsiveToolbar>
         <Button
           component={Link}

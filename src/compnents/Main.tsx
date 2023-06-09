@@ -1,8 +1,8 @@
 import React from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import { Button } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Button, TextField } from '@mui/material';
+import { Link, NavLink } from 'react-router-dom';
 
 import Footer from './Footer';
 
@@ -50,10 +50,10 @@ const Main: React.FC = () => {
       <hr style={{ marginTop: "30px" }}></hr>
       <div style={{ marginTop: "30px", width: "100%", height: "auto", display: "flex", justifyContent: "center" }}>
         <div style={{ marginTop: "30px", width: "50%", height: "auto", display: "flex", justifyContent: "space-evenly" }}>
-          <Link to='#' style={{ fontSize: "large", color: "grey" }}><b>menu</b></Link>
-          <Link to='#'  style={{ fontSize: "large", color: "grey" }}><b>plates</b></Link>
-          <Link to='#' style={{ fontSize: "large", color: "grey" }}><b>salads</b></Link>
-          <Link to='#' style={{ fontSize: "large", color: "grey" }}><b>sandwiches</b></Link>
+          <NavLink to='#' style={{ fontSize: "large", color: "grey" }}><b>menu</b></NavLink>
+          <NavLink to='#'  style={{ fontSize: "large", color: "grey" }}><b>plates</b></NavLink>
+          <NavLink to='#' style={{ fontSize: "large", color: "grey" }}><b>salads</b></NavLink>
+          <NavLink to='#' style={{ fontSize: "large", color: "grey" }}><b>sandwiches</b></NavLink>
         </div>
       </div>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', marginTop: "10px" }}>
@@ -77,8 +77,9 @@ const Main: React.FC = () => {
         <p style={{ color: "green", marginBottom: "10px" }}>
           Sign up to be in the know on new menu items, exclusive events, restaurant openings, and more.
         </p>
-        <input style={{ width: "100%", marginBottom: "10px" }} type='text' placeholder='Enter Your Email' />
-        <input style={{ width: "100%", backgroundColor: "green", color: "white", border: "none", padding: "10px 20px" }} type='submit' value="Subscribe" />
+        <TextField style={{ width: "100%", marginBottom: "10px" }} type='text' placeholder='Enter Your Email'>
+        </TextField>
+        <Button style={{ width: "100%", backgroundColor: "green", color: "white" }} type='submit' value="Subscribe" >Subscribe</Button>
       </div>
 
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", margin: "20px auto", maxWidth: "600px" }}>
@@ -114,8 +115,8 @@ const Main: React.FC = () => {
         <p>
           <b>
             Welcome, one and all, to our table. Where craveable food is cooked from scratch with quality ingredients.
-            Where it’s sustainably grown, ethically treated, and made to order. All at prices that won’t break the bank.
-            Our secret? There isn’t one. We're fueled by the power of real food and a passion to change the way the world eats,
+            Where it's sustainably grown, ethically treated, and made to order. All at prices that won’t break the bank.
+            Our secret? There isn't one. We're fueled by the power of real food and a passion to change the way the world eats,
             one plate at a time. A movement so easy to join, you can do it by lifting a fork. Everyone deserves to eat this good.
           </b>
         </p>

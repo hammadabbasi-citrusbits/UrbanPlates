@@ -35,7 +35,7 @@ const Login = () => {
     padding: '2px'
   }
   return (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
+    <div style={{ display: 'flex', justifyContent: 'center', marginTop:"9rem" }}>
       <Container className="max-w-screen-lg" sx={{ mt: 4 }}>
         <Typography variant="h3" fontFamily="Bentham" sx={{ mb: 2, float: "left",color: "green", fontFamily: "urban" }}>
         <strong>log in to urban plates</strong>  

@@ -3,6 +3,7 @@ import { Button, Checkbox, FormControlLabel, TextField, Typography } from '@mui/
 import * as yup from 'yup';
 import axios from 'axios';
 import { Link,useNavigate } from 'react-router-dom';
+// import './responsive.css'
 
 const SignupForm = () => {
  
@@ -62,8 +63,15 @@ const SignupForm = () => {
     
     <div style={{ margin: '9rem', display:"flex", justifyContent:"center" }}>
     <form onSubmit={formik.handleSubmit} style={{width:"75%"}}>
-      <Typography variant="h3" className="vc_custom_heading heading-font vc_custom_1624531921657" style={{ fontSize: "40px", color: "#159349", textAlign: "left", fontFamily:"Bentham",fontWeight: "400"}}><strong>welcome to our table</strong></Typography><br />
-      <Typography variant='h5' fontFamily="Bentham" style={{color:"black",clear:"left" ,float:"left"}}>already have an account ? <Link to='/login' style={{color:"#159349"}} onClick={() => navigate('/login')}>log in</Link></Typography>
+      <Typography variant="h3" 
+         style={{ fontSize: "40px", color: "#159349", textAlign: "left", fontFamily:"Bentham",fontWeight: "400"}}>
+         <strong>welcome to our table</strong>
+      </Typography><br />
+      <Typography variant='h5' fontFamily="Bentham" 
+         style={{color:"black",clear:"left" ,float:"left"}}>
+          already have an account ? 
+          <Link to='/login' style={{color:"#159349"}} onClick={() => navigate('/login')}>log in</Link>
+      </Typography>
       <TextField
         id="first_name"
         name="first_name"
