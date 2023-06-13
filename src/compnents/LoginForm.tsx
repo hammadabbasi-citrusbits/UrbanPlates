@@ -2,51 +2,55 @@ import { Typography, Button, Container, TextField } from '@mui/material';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
 
 const validationSchema = yup.object({
-  username: yup.string().required('username is required'),
+  username: yup.string().required('Username is required'),
   password: yup.string().required('Password is required'),
 });
 
 const Login = () => {
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       username: '',
       password: '',
-      return_details: "true"
-        },
+    //  return_details: 'true',
+    },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
       try {
-        values.return_details = "false";
+       // values.return_details = 'false';
         const response = await axios.post('https://urban-staging.novadine.com/api/v2/customers/login', values);
         console.log(response.data);
-      } catch (error) {
-        alert(error);
+
+        navigate('/loggedIn');
+      } catch (error:any) {
+        console.log(error);
+        alert(error?.response?.data?.error)
       }
     },
   });
 
   const isFormEmpty = formik.values.username === '' || formik.values.password === '';
-  const styling ={
-    padding: '2px'
-  }
+  const styling = {
+    padding: '2px',
+  };
+
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', marginTop:"9rem" }}>
+    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '9rem' }}>
       <Container className="max-w-screen-lg" sx={{ mt: 4 }}>
-        <Typography variant="h3" fontFamily="Bentham" sx={{ mb: 2, float: "left",color: "green", fontFamily: "urban" }}>
-        <strong>log in to urban plates</strong>  
+        <Typography variant="h3" fontFamily="Bentham" sx={{ mb: 2, float: 'left', color: 'green', fontFamily: 'urban' }}>
+          <strong>log in to urban plates</strong>
         </Typography>
-        <Typography variant='h6' fontFamily="Bentham" sx={{ color: "black", clear: "left", float: "left" }}>
+        <Typography variant="h6" fontFamily="Bentham" sx={{ color: 'black', clear: 'left', float: 'left' }}>
           Don't have an account ?
-          <Link  to='/Signup' >
-          <Button sx={{ color: "green" }}>JOIN NOW</Button>
+          <Link to="/Signup">
+            <Button sx={{ color: 'green' }}>JOIN NOW</Button>
           </Link>
         </Typography>
-        <form onSubmit={formik.handleSubmit}  >
+        <form onSubmit={formik.handleSubmit}>
           <TextField
             id="username"
             name="username"
@@ -76,14 +80,14 @@ const Login = () => {
           <Button
             type="submit"
             variant="contained"
-            sx={{ mt: 8, width: "100%", backgroundColor: "green" }}
+            sx={{ mt: 8, width: '100%', backgroundColor: 'green' }}
             disabled={isFormEmpty}
           >
             Login
           </Button>
         </form>
         <Typography variant="body2" color="text.secondary" sx={{ mt: 8 }}>
-          <Link to="/forgot-password" style={{color:"green"}}>
+          <Link to="/forgot-password" style={{ color: 'green' }}>
             <u>Forgot Password?</u>
           </Link>
         </Typography>
@@ -93,6 +97,3 @@ const Login = () => {
 };
 
 export default Login;
-
-
-// sx={{ float: "left", color: "green" }

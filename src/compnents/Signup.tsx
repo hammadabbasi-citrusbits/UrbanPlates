@@ -35,24 +35,27 @@ const SignupForm = () => {
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      const baseUrl = 'https://urban-staging.novadine.com/api/v2';
-      const endpoint = '/customers/registration';
-      const url = `${baseUrl}${endpoint}`;
+  const baseUrl = 'https://urban-staging.novadine.com/api/v2';
+  const endpoint = '/customers/registration';
+  const url = `${baseUrl}${endpoint}`;
 
-      try {
+  const apiValues = { ...values } as any;
+  delete apiValues?.confirmPassword;
+  delete apiValues?.zipCode;
+  delete apiValues?.terms;
 
-        const apiValues = {...values} as any;
-        delete apiValues?.confirmPassword;
-        delete apiValues?.zipCode;
-        delete apiValues?.terms;
-        // console.log({apiValues})
+  axios
+    .post(url, apiValues)
+    .then((response) => {
+      console.log(response.data);
 
-        const response = await axios.post(url, apiValues);
-        console.log(response.data);
-      } catch (error) {
-        alert(error);
-      }
-    },
+      navigate('/login')
+    })
+    .catch((error) => {
+      alert(error?.response?.data?.error)
+    });
+}
+    
   });
 
   const styling ={

@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import { Button, TextField } from '@mui/material';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 import Footer from './Footer';
+import RegularMenu from './mainCategoriesItems';
+import PlatePassMenu from './mainCategories';
+import CategoryItems from './CategoryItems';
 
 const images = [
   { id: 1, src: 'src/assets/slider1.jpg', alt: 'Slider 1' },
@@ -12,26 +15,49 @@ const images = [
   { id: 3, src: 'src/assets/slider3.jpg', alt: 'Slider 3' }
 ];
 
-const plates = [
-  { id: 1, src: 'src/assets/card1.jpg', name: 'Plate' },
-  { id: 2, src: 'src/assets/card1.jpg', name: 'Plate' },
-  { id: 3, src: 'src/assets/card1.jpg', name: 'Plate' },
-  { id: 4, src: 'src/assets/card1.jpg', name: 'Plate' },
-  { id: 5, src: 'src/assets/card1.jpg', name: 'Plate' },
-  { id: 6, src: 'src/assets/card1.jpg', name: 'Plate' },
-  { id: 7, src: 'src/assets/card1.jpg', name: 'Plate' },
-  { id: 8, src: 'src/assets/card1.jpg', name: 'Plate' },
-  { id: 9, src: 'src/assets/card1.jpg', name: 'Plate' },
-  { id: 10, src: 'src/assets/card1.jpg', name: 'Plate' },
-  { id: 11, src: 'src/assets/card1.jpg', name: 'Plate' },
-  { id: 12, src: 'src/assets/card1.jpg', name: 'Plate' },
-  { id: 13, src: 'src/assets/card1.jpg', name: 'Plate' },
-  { id: 14, src: 'src/assets/card1.jpg', name: 'Plate' },
-  { id: 15, src: 'src/assets/card1.jpg', name: 'Plate' },
-  { id: 16, src: 'src/assets/card1.jpg', name: 'Plate' },
-];
+// const plates_ = [
+//   { id: 1, src: 'src/assets/card1.jpg', name: 'Plate' },
+//   { id: 2, src: 'src/assets/card1.jpg', name: 'Plate' },
+//   { id: 3, src: 'src/assets/card1.jpg', name: 'Plate' },
+//   { id: 4, src: 'src/assets/card1.jpg', name: 'Plate' },
+//   { id: 5, src: 'src/assets/card1.jpg', name: 'Plate' },
+//   { id: 6, src: 'src/assets/card1.jpg', name: 'Plate' },
+//   { id: 7, src: 'src/assets/card1.jpg', name: 'Plate' },
+//   { id: 8, src: 'src/assets/card1.jpg', name: 'Plate' },
+//   { id: 9, src: 'src/assets/card1.jpg', name: 'Plate' },
+//   { id: 10, src: 'src/assets/card1.jpg', name: 'Plate' },
+//   { id: 11, src: 'src/assets/card1.jpg', name: 'Plate' },
+//   { id: 12, src: 'src/assets/card1.jpg', name: 'Plate' },
+//   { id: 13, src: 'src/assets/card1.jpg', name: 'Plate' },
+//   { id: 14, src: 'src/assets/card1.jpg', name: 'Plate' },
+//   { id: 15, src: 'src/assets/card1.jpg', name: 'Plate' },
+//   { id: 16, src: 'src/assets/card1.jpg', name: 'Plate' },
+// ];
 
 const Main: React.FC = () => {
+  const navigate=useNavigate();
+  const [plates,setPlates]=useState<any>([]);
+  useEffect(()=>{
+    getPlates();
+  },[]);
+  const getPlates=async()=>{
+try {
+  const res= await fetch('https://urban-staging.novadine.com/api/v2/stores/000/menus?service_type_id=2&skip_pick_lists=true');
+  const data= await res.json();
+  console.log(data);
+  setPlates(data);
+} catch (error) {
+  console.log(error)
+}
+  }
+// const [selectedId, setSelectedId] = useState<string | null>(null);
+// // const [selectedType, setSelectedType] = useState<'menu'|'category'|'item'>('menu');
+
+// const handleClick = (itemId : any) => {
+//   setSelectedId(itemId);
+//   };
+const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
+
   return (
     <>
       <div style={{ height: "50%", width: "100%", marginTop: "30px" }}>
@@ -56,20 +82,61 @@ const Main: React.FC = () => {
           <NavLink to='#' style={{ fontSize: "large", color: "grey" }}><b>sandwiches</b></NavLink>
         </div>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', marginTop: "10px" }}>
+      {/* <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', marginTop: "10px" }}>
+  <div style={{ display: "grid", justifyContent: 'center', gridTemplateColumns: "repeat(3, 1fr)", gridTemplateRows: "repeat(5, 1fr)", padding: "30px", gap: "30px", marginTop: "30px", width: "75%", alignContent: "center" }}>
+    {plates.length > 0 && (
+      plates[0].categories.map((category) => (
+        <Link
+          key={category.category_id}
+          to={`/plate/${category.category_id}`} 
+          style={{ textDecoration: 'none' }}
+        >
+          <div
+            style={{ backgroundColor: "lightcoral", width: "100%", height: "250px", marginTop: "10px" }}
+          >
+            <div style={{ marginTop: "5px", textAlign: "center", color: "black" }}>
+              {category.name}
+            </div>
+          </div>
+        </Link>
+      ))
+    )}
+  </div>
+</div> */}
+
+<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', marginTop: "10px" }}>
         <div style={{ display: "grid", justifyContent: 'center', gridTemplateColumns: "repeat(3, 1fr)", gridTemplateRows: "repeat(5, 1fr)", padding: "30px", gap: "30px", marginTop: "30px", width: "75%", alignContent: "center" }}>
-          {plates.map((plate) => (
-            <a key={plate.id} href='#'>
-              <div style={{ backgroundColor: "lightcoral", width: "100%", height: "250px", marginTop: "10px" }}>
-                <img src={plate.src} width='320px' height='250px' alt="Plate" />
-                <div style={{ marginTop: "5px", textAlign: "center", color: "black" }}>{plate.name}</div>
+          {plates.length > 0 && (
+            plates[0].categories.map((category:any) => (
+              <div
+                key={category.category_id}
+                // style={{ cursor: 'pointer' }}
+                onClick={() =>
+                  //  setSelectedCategoryId(category.category_id)
+                  navigate(`/plate/${category?.category_id}`,{state:category})
+                  }
+              >
+                {/* <Link
+                  to={`/plate/${category.category_id}`} 
+                  style={{ textDecoration: 'none' }}
+                > */}
+                  <div
+                    style={{ backgroundColor: "lightcoral", width: "100%", height: "250px", marginTop: "10px" }}
+                  >
+                    <div style={{ marginTop: "5px", textAlign: "center", color: "black" }}>
+                      {category.name}
+                    </div>
+                  </div>
+                {/* </Link> */}
               </div>
-            </a>
-          ))}
+            ))
+          )}
         </div>
       </div>
-      <div style={{display:"flex", justifyContent:"center", marginTop:"1rem"}}>
 
+      <CategoryItems categoryId={selectedCategoryId} plates={plates} />
+
+      <div style={{display:"flex", justifyContent:"center", marginTop:"1rem"}}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", margin: "20px auto", maxWidth: "600px" }}>
         <h3 style={{ color: "green", fontFamily: "Verdana, Geneva", fontSize: "14pt", marginBottom: "10px" }}>
           JOIN OUR NEWSLETTER
@@ -81,7 +148,6 @@ const Main: React.FC = () => {
         </TextField>
         <Button style={{ width: "100%", backgroundColor: "green", color: "white" }} type='submit' value="Subscribe" >Subscribe</Button>
       </div>
-
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", margin: "20px auto", maxWidth: "600px" }}>
         <h3 style={{ textAlign: "center", fontFamily: "Verdana Geneva", fontSize: "14pt", color: "green" }}>
           DOWNLOAD OUR APP

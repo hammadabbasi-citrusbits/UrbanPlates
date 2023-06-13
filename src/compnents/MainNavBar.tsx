@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, Avatar, Button, Drawer, List, ListItem, ListItemText, styled } from '@mui/material';
 import { Link } from 'react-router-dom';
+import MenuIcon from '@mui/icons-material/Menu';
 
 const ResponsiveToolbar = styled(Toolbar)(({ theme }) => ({
-  alignItems:"center",
+  alignItems: "center",
+  //  justifyContent:"space-between",
   [theme.breakpoints.down('sm')]: {
     flexDirection: 'column',
     alignItems: 'center',
-   
   },
 }));
 
 const ResponsiveButtons = styled('div')(({ theme }) => ({
   display: 'flex',
+  justifyContent:"space-between",
   [theme.breakpoints.down('sm')]: {
     display: 'none',
   },
@@ -29,19 +31,19 @@ const MainNavbar: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-    if (
-      event &&
-      event.type === 'keydown' &&
-      ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')
-    ) {
-      return;
-    }
+    // if (
+    //   event &&
+    //   event.type === 'keydown' &&
+    //   ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')
+    // ) {
+    //   return;
+    // }
 
     setDrawerOpen(open);
   };
 
   return (
-    <AppBar style={{ backgroundColor: 'white'}}>
+    <AppBar style={{ backgroundColor: 'white' }}>
       <ResponsiveToolbar>
         <Button
           component={Link}
@@ -50,7 +52,7 @@ const MainNavbar: React.FC = () => {
             fontVariant: 'h6',
             color: 'green',
             fontFamily: 'Bertham, sans-serif',
-            marginBottom: '1rem', 
+            marginBottom: '1rem',
           }}
         >
           URBAN PLATES
@@ -61,7 +63,7 @@ const MainNavbar: React.FC = () => {
           style={{
             color: 'green',
             fontFamily: 'Bertham, sans-serif',
-            marginBottom: '1rem', 
+            marginBottom: '1rem',
           }}
         >
           <Avatar alt="Sign In" src="/path/to/avatar.png" />
@@ -91,8 +93,8 @@ const MainNavbar: React.FC = () => {
           </Button>
         </ResponsiveButtons>
         <MobileButtons>
-          <Button onClick={toggleDrawer(true)} style={{ color: 'green', fontFamily: 'Bertham, sans-serif' }}>
-            Menu
+          <Button onClick={toggleDrawer(true)} style={{ color: 'green', fontFamily: 'Bertham, sans-serif', clear:"left", float:"left" }}>
+            <MenuIcon />
           </Button>
         </MobileButtons>
       </ResponsiveToolbar>
