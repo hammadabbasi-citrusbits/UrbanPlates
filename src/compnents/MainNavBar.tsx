@@ -66,7 +66,7 @@ const MainNavbar: React.FC = () => {
             marginBottom: '1rem',
           }}
         >
-          <Avatar alt="Sign In" src="/path/to/avatar.png" />
+          <Avatar alt="Sign In" />
           Sign In
         </Button>
         <ResponsiveButtons>

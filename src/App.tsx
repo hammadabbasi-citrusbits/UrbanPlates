@@ -1,16 +1,11 @@
-import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './compnents/LoginForm';
 import SignupForm from './compnents/Signup';
-import MainNavbar from './compnents/MainNavBar';
 import Main from './compnents/Main';
 import ForgotPassword from './compnents/ForgotPassword';
-import Footer from './compnents/Footer';
-import CarouseLL from './compnents/Carousel';
 import LoggedIn from './compnents/LoggedOut';
-import PlatePassMenu from './compnents/mainCategories';
 import CategoryItems from './compnents/CategoryItems';
-
-
+import Navbar from './compnents/Navbar';
 
 
 
@@ -18,8 +13,7 @@ function App() {
   <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
   return (
     <Router>
-      {/* <Navbar/> */}
-        <MainNavbar/>
+      <Navbar/>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<SignupForm />} />

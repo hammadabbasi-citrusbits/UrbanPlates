@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
             Logo 
           </Link> */}
           <div style={{width:"25%"}}>
-          <Link to="home" onClick={() => navigate('/home')}><b>Urban Plates</b></Link>
+          <Link to="/main" onClick={() => navigate('/main')}><b>Urban Plates</b></Link>
           </div>
         </Typography>
         <Button href="/button-link" sx={{ color:"green", clear:"left", float:"left", borderRadius:"25px" }}>
