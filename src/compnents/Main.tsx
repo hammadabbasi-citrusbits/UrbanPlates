@@ -76,7 +76,7 @@ try {
         </div>
       </div>
 
-      {/* <div style={{display:"flex", justifyContent:"center"}}>
+      <div style={{display:"flex", justifyContent:"center"}}>
       <div style={{width:"40%", display:"flex", justifyContent:"center"}}>      
             <Carousel autoPlay={true}>
                 <div>
@@ -90,7 +90,7 @@ try {
                 </div>
             </Carousel>
       </div>
-      </div> */}
+      </div>
 
 
 
